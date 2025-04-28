@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dennis Terlumun Bijah - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .section-heading {
+            border-bottom: 3px solid #10B981;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #10B981;
+        }
+        #nav-menu {
+            transition: max-height 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-10">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-lg md:text-xl font-bold text-gray-800">Dennis Bijah</h1>
+            <button id="nav-toggle" class="md:hidden text-gray-600 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            <ul id="nav-menu" class="hidden md:flex md:space-x-6 md:items-center max-h-0 md:max-h-full overflow-hidden md:overflow-visible flex-col md:flex-row absolute md:static bg-white md:bg-transparent w-full md:w-auto left-0 top-16 md:top-0">
+                <li class="py-2 md:py-0"><a href="#about" class="nav-link text-gray-600 hover:text-green-500 px-4 md:px-0">About</a></li>
+                <li class="py-2 md:py-0"><a href="#education" class="nav-link text-gray-600 hover:text-green-500 px-4 md:px-0">Education</a></li>
+                <li class="py-2 md:py-0"><a href="#experience" class="nav-link text-gray-600 hover:text-green-500 px-4 md:px-0">Experience</a></li>
+                <li class="py-2 md:py-0"><a href="#skills" class="nav-link text-gray-600 hover:text-green-500 px-4 md:px-0">Skills</a></li>
+                <li class="py-2 md:py-0"><a href="#projects" class="nav-link text-gray-600 hover:text-green-500 px-4 md:px-0">Projects</a></li>
+                <li class="py-2 md:py-0"><a href="#contact" class="nav-link text-gray-600 hover:text-green-500 px-4 md:px-0">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-r from-green-500 to-teal-500 text-white text-center py-12 md:py-16">
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">Dennis Terlumun Bijah</h1>
+        <p class="text-base md:text-xl mb-6">Python Programmer | Fullstack Developer | Data Scientist</p>
+        <div class="space-x-4">
+            <a href="#projects" class="bg-white text-green-600 px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold hover:bg-gray-100 transition">View My Work</a>
+            <a href="cv.pdf" download class="bg-green-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold hover:bg-green-800 transition">Download CV</a>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-6 md:py-8">
+        <!-- About Section -->
+        <section id="about" class="mb-8 md:mb-12">
+            <h2 class="text-2xl md:text-3xl font-semibold section-heading">About Me</h2>
+            <p class="text-base md:text-lg">I’m an Information Technology student at the Federal University of Technology Minna, passionate about Python programming, fullstack development with Django, and data science. Skilled in Python, Django, pandas, numpy, matplotlib, HTML, and CSS, I’ve built web applications and analyzed data through projects and an internship, aiming to solve real-world challenges.</p>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="mb-8 md:mb-12">
+            <h2 class="text-2xl md:text-3xl font-semibold section-heading">Education</h2>
+            <div>
+                <h3 class="text-lg md:text-xl font-semibold">Bachelor of Technology in Information Technology</h3>
+                <p>Federal University of Technology Minna, Nigeria</p>
+                <p class="text-gray-600">300 Level (Expected Graduation: 2027)</p>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="mb-8 md:mb-12">
+            <h2 class="text-2xl md:text-3xl font-semibold section-heading">Experience</h2>
+            <div>
+                <h3 class="text-lg md:text-xl font-semibold">Data Analysis Intern</h3>
+                <p>Forage (Online), 2022 – 2023</p>
+                <ul class="list-disc ml-6 text-base md:text-lg">
+                    <li>Analyzed datasets using Python, pandas, and matplotlib to uncover actionable insights.</li>
+                    <li>Developed visualizations to present trends to stakeholders.</li>
+                    <li>Collaborated remotely to deliver data-driven recommendations.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="mb-8 md:mb-12">
+            <h2 class="text-2xl md:text-3xl font-semibold section-heading">Skills</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                    <h4 class="font-semibold">Programming</h4>
+                    <p>Python</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold">Frameworks & Libraries</h4>
+                    <p>Django, pandas, numpy, matplotlib</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold">Web Development</h4>
+                    <p>HTML, CSS</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="mb-8 md:mb-12">
+            <h2 class="text-2xl md:text-3xl font-semibold section-heading">Projects</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                <div class="project-card bg-white p-4 md:p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg md:text-xl font-semibold">GTA Six Project on Solana Website (2024)</h3>
+                    <p class="text-gray-600 text-sm md:text-base">Led development of a website for the GTA Six project on Solana, integrating blockchain features using HTML, CSS, and JavaScript.</p>
+                    <a href="https://github.com/Dennis433/gta-on-sol" class="text-green-500 hover:underline text-sm md:text-base" target="_blank">GitHub</a>
+                </div>
+                <div class="project-card bg-white p-4 md:p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg md:text-xl font-semibold">Customer Segmentation</h3>
+                    <p class="text-gray-600 text-sm md:text-base">Used Python and pandas to segment customers for targeted marketing strategies.</p>
+                    <a href="https://github.com/Dennis433/Customer-segmentation" class="text-green-500 hover:underline text-sm md:text-base" target="_blank">GitHub</a>
+                </div>
+                <div class="project-card bg-white p-4 md:p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg md:text-xl font-semibold">Sales Analysis with Python</h3>
+                    <p class="text-gray-600 text-sm md:text-base">Performed data cleaning and EDA with Python to identify sales trends and support business decisions.</p>
+                    <a href="https://github.com/Dennis433/Sales-analysis-with-python" class="text-green-500 hover:underline text-sm md:text-base" target="_blank">GitHub</a>
+                </div>
+                <div class="project-card bg-white p-4 md:p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg md:text-xl font-semibold">FIFA Data Cleaning</h3>
+                    <p class="text-gray-600 text-sm md:text-base">Cleaned and analyzed FIFA player data using Python, pandas, and matplotlib to visualize statistics.</p>
+                    <a href="https://github.com/Dennis433/Fifa-Data-cleaning-march" class="text-green-500 hover:underline text-sm md:text-base" target="_blank">GitHub</a>
+                </div>
+                <div class="project-card bg-white p-4 md:p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg md:text-xl font-semibold">Mad Libs Program</h3>
+                    <p class="text-gray-600 text-sm md:text-base">Built a Python-based Mad Libs program to showcase programming fundamentals.</p>
+                    <a href="https://github.com/Dennis433/A-simple-madlibs-program" class="text-green-500 hover:underline text-sm md:text-base" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="mb-8 md:mb-12">
+            <h2 class="text-2xl md:text-3xl font-semibold section-heading">Certifications</h2>
+            <p class="text-base md:text-lg">Kaggle Introduction to Python, Kaggle, 2022</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mb-8 md:mb-12">
+            <h2 class="text-2xl md:text-3xl font-semibold section-heading">Get in Touch</h2>
+            <div class="flex flex-col md:flex-row md:space-x-6">
+                <div class="md:w-1/2 mb-6 md:mb-0">
+                    <p class="text-base md:text-lg">Gonin Gora, Kaduna, Nigeria</p>
+                    <p class="text-base md:text-lg">Phone: +234 816 987 7809 | +234 915 423 6912</p>
+                    <p class="text-base md:text-lg">Email: <a href="mailto:dennisbija234@gmail.com" class="text-green-500 hover:underline">dennisbija234@gmail.com</a></p>
+                    <p class="text-base md:text-lg">LinkedIn: <a href="https://www.linkedin.com/in/dennis-bija-827512261/" class="text-green-500 hover:underline" target="_blank">linkedin.com/in/dennis-bija</a></p>
+                    <p class="text-base md:text-lg">GitHub: <a href="https://github.com/Dennis433" class="text-green-500 hover:underline" target="_blank">github.com/Dennis433</a></p>
+                    <p class="text-base md:text-lg">Twitter: <a href="https://twitter.com/Natefurry" class="text-green-500 hover:underline" target="_blank">twitter.com/Natefurry</a></p>
+                    <a href="cv.pdf" download class="inline-block mt-4 bg-green-700 text-white px-4 py-2 rounded-md hover:bg-green-800 transition text-sm md:text-base">Download CV</a>
+                </div>
+                <form class="md:w-1/2 space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium">Name</label>
+                        <input type="text" id="name" class="w-full p-2 border rounded-md text-sm md:text-base" placeholder="Your Name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium">Email</label>
+                        <input type="email" id="email" class="w-full p-2 border rounded-md text-sm md:text-base" placeholder="Your Email">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium">Message</label>
+                        <textarea id="message" class="w-full p-2 border rounded-md text-sm md:text-base" rows="4" placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition text-sm md:text-base">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-4">
+        <p class="text-sm md:text-base">© 2025 Dennis Terlumun Bijah. All rights reserved.</p>
+        <p class="text-sm md:text-base">References available upon request.</p>
+    </footer>
+
+    <script>
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+            navMenu.classList.toggle('max-h-0');
+            navMenu.classList.toggle('max-h-screen');
+        });
+    </script>
+</body>
+</html>
