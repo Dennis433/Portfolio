@@ -3,200 +3,703 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dennis Terlumun Bijah - Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Dennis Terlumun Bijah — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
+        :root {
+            --green: #10b981;
+            --green-dark: #059669;
+            --green-glow: #34d399;
+            --bg: #0a0f0d;
+            --bg2: #0f1712;
+            --bg3: #141f18;
+            --card: #131a16;
+            --border: #1e2e25;
+            --text: #e8f0eb;
+            --muted: #7a9e8a;
+            --white: #ffffff;
         }
-        .section-heading {
-            border-bottom: 3px solid #10B981;
-            padding-bottom: 0.5rem;
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(10,15,13,0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            height: 60px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-brand {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--green);
+            letter-spacing: -0.02em;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--green); }
+
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: var(--muted); transition: 0.3s; }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0; z-index: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 50% 0%, rgba(16,185,129,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 80% 80%, rgba(52,211,153,0.05) 0%, transparent 60%);
+        }
+        .hero-grid {
+            position: absolute; inset: 0; z-index: 0;
+            background-image:
+                linear-gradient(rgba(16,185,129,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16,185,129,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 700px; }
+
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(16,185,129,0.1);
+            border: 1px solid rgba(16,185,129,0.25);
+            border-radius: 100px;
+            padding: 0.35rem 1rem;
+            font-size: 0.78rem;
+            color: var(--green-glow);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: var(--white);
             margin-bottom: 1rem;
         }
+        h1 span { color: var(--green); }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--muted);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: var(--green);
+            color: #000;
+        }
+        .btn-primary:hover { background: var(--green-glow); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(16,185,129,0.3); }
+        .btn-outline {
+            background: transparent;
+            color: var(--green);
+            border: 1px solid rgba(16,185,129,0.4);
+        }
+        .btn-outline:hover { background: rgba(16,185,129,0.08); transform: translateY(-2px); }
+
+        /* SECTIONS */
+        section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--green);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: var(--white);
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .about-text { font-size: 1.05rem; line-height: 1.8; color: var(--muted); }
+        .about-text strong { color: var(--text); }
+
+        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+        .stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--green); }
+        .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+
+        /* SKILLS */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+        .skill-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .skill-card:hover { border-color: rgba(16,185,129,0.4); transform: translateY(-3px); }
+        .skill-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+        .skill-name { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.9rem; color: var(--white); margin-bottom: 0.4rem; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
+        .tag {
+            background: rgba(16,185,129,0.08);
+            border: 1px solid rgba(16,185,129,0.15);
+            color: var(--green-glow);
+            font-size: 0.72rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: 100px;
+        }
+
+        /* PROJECTS */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+
         .project-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.75rem;
+            transition: border-color 0.2s, transform 0.2s;
+            position: relative;
+            overflow: hidden;
         }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--green), transparent);
+            opacity: 0;
+            transition: opacity 0.2s;
         }
-        .nav-link {
-            transition: color 0.3s ease;
+        .project-card:hover { border-color: rgba(16,185,129,0.35); transform: translateY(-4px); }
+        .project-card:hover::before { opacity: 1; }
+
+        .project-card.featured {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
         }
-        .nav-link:hover {
-            color: #10B981;
+        .project-card.featured::before { opacity: 1; }
+        .project-card.featured { border-color: rgba(16,185,129,0.3); }
+
+        .project-badge {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            background: rgba(16,185,129,0.12);
+            border: 1px solid rgba(16,185,129,0.25);
+            color: var(--green-glow);
+            font-size: 0.72rem; font-weight: 600;
+            padding: 0.3rem 0.75rem;
+            border-radius: 100px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
         }
-        #nav-menu {
-            transition: max-height 0.3s ease-in-out;
+        .project-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--white); margin-bottom: 0.75rem; }
+        .project-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.25rem; }
+        .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
+        .project-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .project-link {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            color: var(--green);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding: 0.4rem 0.9rem;
+            border: 1px solid rgba(16,185,129,0.25);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .project-link:hover { background: rgba(16,185,129,0.1); border-color: var(--green); }
+        .project-link svg { width: 13px; height: 13px; }
+
+        .featured-info { display: flex; flex-direction: column; }
+        .featured-visual {
+            background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(52,211,153,0.03));
+            border: 1px solid rgba(16,185,129,0.15);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex; flex-direction: column; gap: 0.75rem;
+        }
+        .feature-item {
+            display: flex; align-items: center; gap: 0.75rem;
+            font-size: 0.85rem; color: var(--muted);
+        }
+        .feature-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+
+        /* EXPERIENCE & EDUCATION */
+        .timeline { display: flex; flex-direction: column; gap: 1.5rem; }
+        .timeline-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--green);
+            border-radius: 0 12px 12px 0;
+            padding: 1.5rem;
+        }
+        .timeline-role { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--white); }
+        .timeline-place { color: var(--green); font-size: 0.9rem; margin: 0.25rem 0; }
+        .timeline-date { color: var(--muted); font-size: 0.8rem; margin-bottom: 0.75rem; }
+        .timeline-bullets { list-style: none; }
+        .timeline-bullets li { font-size: 0.9rem; color: var(--muted); padding: 0.25rem 0; padding-left: 1rem; position: relative; }
+        .timeline-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--green); font-size: 0.8rem; }
+
+        /* CONTACT */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .contact-info p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+        .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+        .contact-link {
+            display: flex; align-items: center; gap: 0.75rem;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.75rem 1rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+        .contact-link:hover { border-color: rgba(16,185,129,0.4); color: var(--green); }
+        .contact-link-icon { font-size: 1.1rem; }
+
+        .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+        .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+        label { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
+        input, textarea {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            padding: 0.75rem 1rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+        input:focus, textarea:focus { border-color: rgba(16,185,129,0.5); }
+        textarea { resize: vertical; min-height: 100px; }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: var(--bg); padding: 1rem 2rem; border-bottom: 1px solid var(--border); gap: 1.25rem; }
+            .nav-links.open { display: flex; }
+            .hamburger { display: flex; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .project-card.featured { grid-column: auto; grid-template-columns: 1fr; }
+            .featured-visual { display: none; }
+            section { padding: 3.5rem 1.25rem; }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-10">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-lg md:text-xl font-bold text-gray-800">Dennis Bijah</h1>
-            <button id="nav-toggle" class="md:hidden text-gray-600 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-            <ul id="nav-menu" class="hidden md:flex md:space-x-6 md:items-center max-h-0 md:max-h-full overflow-hidden md:overflow-visible flex-col md:flex-row absolute md:static bg-white md:bg-transparent w-full md:w-auto left-0 top-16 md:top-0">
-                <li class="py-2 md:py-0"><a href="#about" class="nav-link text-gray-600 hover:text-green-500 px-4 md:px-0">About</a></li>
-                <li class="py-2 md:py-0"><a href="#education" class="nav-link text-gray-600 hover:text-green-500 px-4 md:px-0">Education</a></li>
-                <li class="py-2 md:py-0"><a href="#experience" class="nav-link text-gray-600 hover:text-green-500 px-4 md:px-0">Experience</a></li>
-                <li class="py-2 md:py-0"><a href="#skills" class="nav-link text-gray-600 hover:text-green-500 px-4 md:px-0">Skills</a></li>
-                <li class="py-2 md:py-0"><a href="#projects" class="nav-link text-gray-600 hover:text-green-500 px-4 md:px-0">Projects</a></li>
-                <li class="py-2 md:py-0"><a href="#contact" class="nav-link text-gray-600 hover:text-green-500 px-4 md:px-0">Contact</a></li>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-brand">Dennis Bijah</div>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+        <div class="hero-badge"><span class="badge-dot"></span> Open to Opportunities</div>
+        <h1>Dennis <span>Terlumun</span> Bijah</h1>
+        <p class="hero-tagline">Python Programmer · Fullstack Developer · Data Scientist<br>Solana Blockchain & Bot Developer</p>
+        <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="cv.pdf" download="Dennis_Bijah_CV.pdf" class="btn btn-outline">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download CV
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="section-label">About Me</div>
+    <h2>Building real things<br>with code.</h2>
+    <div class="about-grid">
+        <div>
+            <p class="about-text">
+                I'm an Information Technology student at <strong>Federal University of Technology Minna</strong>, passionate about Python programming, fullstack development, data science, and Solana blockchain.
+                <br><br>
+                I've built and deployed <strong>production Telegram bots</strong>, presale systems, Solana smart contracts, and full web applications. I work with Python, Django, Flask, Solana/Web3, and more — turning ideas into shipped products.
+            </p>
+        </div>
+        <div class="stat-grid">
+            <div class="stat-card"><div class="stat-num">5+</div><div class="stat-label">Projects Shipped</div></div>
+            <div class="stat-card"><div class="stat-num">3+</div><div class="stat-label">Years Coding</div></div>
+            <div class="stat-card"><div class="stat-num">SOL</div><div class="stat-label">Blockchain Dev</div></div>
+            <div class="stat-card"><div class="stat-num">2027</div><div class="stat-label">Expected Graduation</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+    <div class="section-label">Technical Stack</div>
+    <h2>Skills & Technologies</h2>
+    <div class="skills-grid">
+        <div class="skill-card">
+            <div class="skill-icon">🐍</div>
+            <div class="skill-name">Python</div>
+            <div class="skill-tags">
+                <span class="tag">Django</span>
+                <span class="tag">Flask</span>
+                <span class="tag">pandas</span>
+                <span class="tag">numpy</span>
+                <span class="tag">matplotlib</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">🤖</div>
+            <div class="skill-name">Bot Development</div>
+            <div class="skill-tags">
+                <span class="tag">python-telegram-bot</span>
+                <span class="tag">Telegram Web App</span>
+                <span class="tag">Mini Apps</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">⛓️</div>
+            <div class="skill-name">Blockchain / Solana</div>
+            <div class="skill-tags">
+                <span class="tag">SPL Tokens</span>
+                <span class="tag">Anchor/Rust</span>
+                <span class="tag">Web3.js</span>
+                <span class="tag">Metaplex</span>
+                <span class="tag">Helius RPC</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">🌐</div>
+            <div class="skill-name">Web Development</div>
+            <div class="skill-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">Tailwind</span>
+                <span class="tag">JavaScript</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">📊</div>
+            <div class="skill-name">Data Science</div>
+            <div class="skill-tags">
+                <span class="tag">EDA</span>
+                <span class="tag">Data Cleaning</span>
+                <span class="tag">Visualization</span>
+                <span class="tag">Segmentation</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">🚀</div>
+            <div class="skill-name">DevOps & Tools</div>
+            <div class="skill-tags">
+                <span class="tag">Git</span>
+                <span class="tag">GitHub</span>
+                <span class="tag">Render</span>
+                <span class="tag">SQLite</span>
+                <span class="tag">PostgreSQL</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <div class="section-label">Work</div>
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+
+        <!-- TIKBIT FEATURED -->
+        <div class="project-card featured">
+            <div class="featured-info">
+                <div class="project-badge">🔥 Live Project</div>
+                <div class="project-title">TIKBIT ($TKB) Presale Bot</div>
+                <p class="project-desc">A full Telegram-based Solana presale system — handling SOL payments, on-chain transaction verification, automated token distribution, a referral tracking system, and a Telegram Web App mini app. Deployed and live on Render.</p>
+                <div class="project-stack">
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">python-telegram-bot</span>
+                    <span class="tag">Solana</span>
+                    <span class="tag">SQLite</span>
+                    <span class="tag">Render</span>
+                    <span class="tag">Helius RPC</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Dennis433/Tikbit-presale-bot" class="project-link" target="_blank">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                    <a href="https://t.me/Tikbitpresalebot" class="project-link" target="_blank">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        @Tikbitpresalebot
+                    </a>
+                    <a href="https://tikbit-bot.onrender.com" class="project-link" target="_blank">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        Official Site
+                    </a>
+                    <a href="https://tikbit-bot.onrender.com" class="project-link" target="_blank">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                        Render Deploy
+                    </a>
+                </div>
+            </div>
+            <div class="featured-visual">
+                <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--green);margin-bottom:0.5rem;">Bot Features</div>
+                <div class="feature-item"><div class="feature-dot"></div>SOL payment detection & verification</div>
+                <div class="feature-item"><div class="feature-dot"></div>On-chain transaction confirmation</div>
+                <div class="feature-item"><div class="feature-dot"></div>Automated $TKB token distribution</div>
+                <div class="feature-item"><div class="feature-dot"></div>Multi-tier referral system</div>
+                <div class="feature-item"><div class="feature-dot"></div>Telegram Web App mini app</div>
+                <div class="feature-item"><div class="feature-dot"></div>Deployed live on Render</div>
+                <div class="feature-item"><div class="feature-dot"></div>Helius RPC integration</div>
+            </div>
+        </div>
+
+        <!-- GTA Six on Sol -->
+        <div class="project-card">
+            <div class="project-badge">⛓️ Web3</div>
+            <div class="project-title">GTA Six on Solana Website</div>
+            <p class="project-desc">Led development of a website for the GTA Six project on Solana, integrating blockchain features and a presale interface using HTML, CSS, and JavaScript.</p>
+            <div class="project-stack">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Solana</span>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/Dennis433/gta-on-sol" class="project-link" target="_blank">GitHub</a>
+            </div>
+        </div>
+
+        <!-- Customer Segmentation -->
+        <div class="project-card">
+            <div class="project-badge">📊 Data Science</div>
+            <div class="project-title">Customer Segmentation</div>
+            <p class="project-desc">Used Python and pandas to segment customers for targeted marketing strategies. Cluster analysis with visualization of segment characteristics.</p>
+            <div class="project-stack">
+                <span class="tag">Python</span>
+                <span class="tag">pandas</span>
+                <span class="tag">matplotlib</span>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/Dennis433/Customer-segmentation" class="project-link" target="_blank">GitHub</a>
+            </div>
+        </div>
+
+        <!-- Sales Analysis -->
+        <div class="project-card">
+            <div class="project-badge">📈 Analysis</div>
+            <div class="project-title">Sales Analysis with Python</div>
+            <p class="project-desc">Performed data cleaning and exploratory data analysis with Python to identify sales trends and support business decisions.</p>
+            <div class="project-stack">
+                <span class="tag">Python</span>
+                <span class="tag">pandas</span>
+                <span class="tag">EDA</span>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/Dennis433/Sales-analysis-with-python" class="project-link" target="_blank">GitHub</a>
+            </div>
+        </div>
+
+        <!-- FIFA Data Cleaning -->
+        <div class="project-card">
+            <div class="project-badge">⚽ Data</div>
+            <div class="project-title">FIFA Data Cleaning</div>
+            <p class="project-desc">Cleaned and analyzed FIFA player data using Python, pandas, and matplotlib to visualize player statistics and performance metrics.</p>
+            <div class="project-stack">
+                <span class="tag">Python</span>
+                <span class="tag">pandas</span>
+                <span class="tag">matplotlib</span>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/Dennis433/Fifa-Data-cleaning-march" class="project-link" target="_blank">GitHub</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+    <div class="section-label">Background</div>
+    <h2>Experience & Education</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <div class="timeline-role">Blockchain & Bot Developer</div>
+            <div class="timeline-place">Independent · Solana Ecosystem</div>
+            <div class="timeline-date">2024 – Present</div>
+            <ul class="timeline-bullets">
+                <li>Built and deployed the TIKBIT ($TKB) presale Telegram bot (Python, Flask, python-telegram-bot)</li>
+                <li>Deployed custom Anchor/Rust smart contract to Solana devnet; mainnet launch in progress</li>
+                <li>Integrated Helius RPC for reliable on-chain transaction verification</li>
             </ul>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <header class="bg-gradient-to-r from-green-500 to-teal-500 text-white text-center py-12 md:py-16">
-        <h1 class="text-3xl md:text-5xl font-bold mb-4">Dennis Terlumun Bijah</h1>
-        <p class="text-base md:text-xl mb-6">Python Programmer | Fullstack Developer | Data Scientist</p>
-        <div class="space-x-4">
-            <a href="#projects" class="bg-white text-green-600 px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold hover:bg-gray-100 transition">View My Work</a>
-            <a href="cv.pdf" download class="bg-green-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold hover:bg-green-800 transition">Download CV</a>
+        <div class="timeline-item">
+            <div class="timeline-role">Data Analysis Intern</div>
+            <div class="timeline-place">Forage (Online)</div>
+            <div class="timeline-date">2022 – 2023</div>
+            <ul class="timeline-bullets">
+                <li>Analyzed datasets using Python, pandas, and matplotlib to uncover actionable insights</li>
+                <li>Developed visualizations to present trends to stakeholders</li>
+                <li>Delivered data-driven recommendations in a remote team setting</li>
+            </ul>
         </div>
-    </header>
 
-    <main class="max-w-6xl mx-auto px-4 py-6 md:py-8">
-        <!-- About Section -->
-        <section id="about" class="mb-8 md:mb-12">
-            <h2 class="text-2xl md:text-3xl font-semibold section-heading">About Me</h2>
-            <p class="text-base md:text-lg">I’m an Information Technology student at the Federal University of Technology Minna, passionate about Python programming, fullstack development with Django, and data science. Skilled in Python, Django, pandas, numpy, matplotlib, HTML, and CSS, I’ve built web applications and analyzed data through projects and an internship, aiming to solve real-world challenges.</p>
-        </section>
+        <div class="timeline-item">
+            <div class="timeline-role">B.Tech in Information Technology</div>
+            <div class="timeline-place">Federal University of Technology Minna, Nigeria</div>
+            <div class="timeline-date">300 Level · Expected 2027</div>
+            <ul class="timeline-bullets">
+                <li>Focus areas: software engineering, data science, web development</li>
+                <li>Kaggle Introduction to Python certification (2022)</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
-        <!-- Education Section -->
-        <section id="education" class="mb-8 md:mb-12">
-            <h2 class="text-2xl md:text-3xl font-semibold section-heading">Education</h2>
-            <div>
-                <h3 class="text-lg md:text-xl font-semibold">Bachelor of Technology in Information Technology</h3>
-                <p>Federal University of Technology Minna, Nigeria</p>
-                <p class="text-gray-600">300 Level (Expected Graduation: 2027)</p>
+<!-- CONTACT -->
+<section id="contact">
+    <div class="section-label">Get in Touch</div>
+    <h2>Let's Work Together</h2>
+    <div class="contact-grid">
+        <div class="contact-info">
+            <p>I'm open to collaborations, freelance work, and interesting blockchain or Python projects. Feel free to reach out.</p>
+            <div class="contact-links">
+                <a href="mailto:dennisbija234@gmail.com" class="contact-link">
+                    <span class="contact-link-icon">✉️</span> dennisbija234@gmail.com
+                </a>
+                <a href="tel:+2348169877809" class="contact-link">
+                    <span class="contact-link-icon">📞</span> +234 816 987 7809
+                </a>
+                <a href="https://github.com/Dennis433" target="_blank" class="contact-link">
+                    <span class="contact-link-icon">🐙</span> github.com/Dennis433
+                </a>
+                <a href="https://www.linkedin.com/in/dennis-bija-827512261/" target="_blank" class="contact-link">
+                    <span class="contact-link-icon">💼</span> LinkedIn Profile
+                </a>
+                <a href="https://twitter.com/Natefurry" target="_blank" class="contact-link">
+                    <span class="contact-link-icon">🐦</span> @Natefurry
+                </a>
+                <a href="cv.pdf" download="Dennis_Bijah_CV.pdf" class="btn btn-primary" style="margin-top:0.5rem; justify-content:center;">
+                    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download CV (PDF)
+                </a>
             </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="mb-8 md:mb-12">
-            <h2 class="text-2xl md:text-3xl font-semibold section-heading">Experience</h2>
-            <div>
-                <h3 class="text-lg md:text-xl font-semibold">Data Analysis Intern</h3>
-                <p>Forage (Online), 2022 – 2023</p>
-                <ul class="list-disc ml-6 text-base md:text-lg">
-                    <li>Analyzed datasets using Python, pandas, and matplotlib to uncover actionable insights.</li>
-                    <li>Developed visualizations to present trends to stakeholders.</li>
-                    <li>Collaborated remotely to deliver data-driven recommendations.</li>
-                </ul>
+        </div>
+        <div>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea placeholder="What's on your mind?"></textarea>
+                </div>
+                <button class="btn btn-primary" style="width:100%;justify-content:center;">Send Message</button>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="mb-8 md:mb-12">
-            <h2 class="text-2xl md:text-3xl font-semibold section-heading">Skills</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div>
-                    <h4 class="font-semibold">Programming</h4>
-                    <p>Python</p>
-                </div>
-                <div>
-                    <h4 class="font-semibold">Frameworks & Libraries</h4>
-                    <p>Django, pandas, numpy, matplotlib</p>
-                </div>
-                <div>
-                    <h4 class="font-semibold">Web Development</h4>
-                    <p>HTML, CSS</p>
-                </div>
-            </div>
-        </section>
+<footer>
+    <p>© 2025 Dennis Terlumun Bijah · Gonin Gora, Kaduna, Nigeria</p>
+    <p style="margin-top:0.35rem;font-size:0.78rem;">References available upon request</p>
+</footer>
 
-        <!-- Projects Section -->
-        <section id="projects" class="mb-8 md:mb-12">
-            <h2 class="text-2xl md:text-3xl font-semibold section-heading">Projects</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-                <div class="project-card bg-white p-4 md:p-6 rounded-lg shadow-md">
-                    <h3 class="text-lg md:text-xl font-semibold">GTA Six Project on Solana Website (2024)</h3>
-                    <p class="text-gray-600 text-sm md:text-base">Led development of a website for the GTA Six project on Solana, integrating blockchain features using HTML, CSS, and JavaScript.</p>
-                    <a href="https://github.com/Dennis433/gta-on-sol" class="text-green-500 hover:underline text-sm md:text-base" target="_blank">GitHub</a>
-                </div>
-                <div class="project-card bg-white p-4 md:p-6 rounded-lg shadow-md">
-                    <h3 class="text-lg md:text-xl font-semibold">Customer Segmentation</h3>
-                    <p class="text-gray-600 text-sm md:text-base">Used Python and pandas to segment customers for targeted marketing strategies.</p>
-                    <a href="https://github.com/Dennis433/Customer-segmentation" class="text-green-500 hover:underline text-sm md:text-base" target="_blank">GitHub</a>
-                </div>
-                <div class="project-card bg-white p-4 md:p-6 rounded-lg shadow-md">
-                    <h3 class="text-lg md:text-xl font-semibold">Sales Analysis with Python</h3>
-                    <p class="text-gray-600 text-sm md:text-base">Performed data cleaning and EDA with Python to identify sales trends and support business decisions.</p>
-                    <a href="https://github.com/Dennis433/Sales-analysis-with-python" class="text-green-500 hover:underline text-sm md:text-base" target="_blank">GitHub</a>
-                </div>
-                <div class="project-card bg-white p-4 md:p-6 rounded-lg shadow-md">
-                    <h3 class="text-lg md:text-xl font-semibold">FIFA Data Cleaning</h3>
-                    <p class="text-gray-600 text-sm md:text-base">Cleaned and analyzed FIFA player data using Python, pandas, and matplotlib to visualize statistics.</p>
-                    <a href="https://github.com/Dennis433/Fifa-Data-cleaning-march" class="text-green-500 hover:underline text-sm md:text-base" target="_blank">GitHub</a>
-                </div>
-                <div class="project-card bg-white p-4 md:p-6 rounded-lg shadow-md">
-                    <h3 class="text-lg md:text-xl font-semibold">Mad Libs Program</h3>
-                    <p class="text-gray-600 text-sm md:text-base">Built a Python-based Mad Libs program to showcase programming fundamentals.</p>
-                    <a href="https://github.com/Dennis433/A-simple-madlibs-program" class="text-green-500 hover:underline text-sm md:text-base" target="_blank">GitHub</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certifications Section -->
-        <section id="certifications" class="mb-8 md:mb-12">
-            <h2 class="text-2xl md:text-3xl font-semibold section-heading">Certifications</h2>
-            <p class="text-base md:text-lg">Kaggle Introduction to Python, Kaggle, 2022</p>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="mb-8 md:mb-12">
-            <h2 class="text-2xl md:text-3xl font-semibold section-heading">Get in Touch</h2>
-            <div class="flex flex-col md:flex-row md:space-x-6">
-                <div class="md:w-1/2 mb-6 md:mb-0">
-                    <p class="text-base md:text-lg">Gonin Gora, Kaduna, Nigeria</p>
-                    <p class="text-base md:text-lg">Phone: +234 816 987 7809 | +234 915 423 6912</p>
-                    <p class="text-base md:text-lg">Email: <a href="mailto:dennisbija234@gmail.com" class="text-green-500 hover:underline">dennisbija234@gmail.com</a></p>
-                    <p class="text-base md:text-lg">LinkedIn: <a href="https://www.linkedin.com/in/dennis-bija-827512261/" class="text-green-500 hover:underline" target="_blank">linkedin.com/in/dennis-bija</a></p>
-                    <p class="text-base md:text-lg">GitHub: <a href="https://github.com/Dennis433" class="text-green-500 hover:underline" target="_blank">github.com/Dennis433</a></p>
-                    <p class="text-base md:text-lg">Twitter: <a href="https://twitter.com/Natefurry" class="text-green-500 hover:underline" target="_blank">twitter.com/Natefurry</a></p>
-                    <a href="cv.pdf" download class="inline-block mt-4 bg-green-700 text-white px-4 py-2 rounded-md hover:bg-green-800 transition text-sm md:text-base">Download CV</a>
-                </div>
-                <form class="md:w-1/2 space-y-4">
-                    <div>
-                        <label for="name" class="block text-sm font-medium">Name</label>
-                        <input type="text" id="name" class="w-full p-2 border rounded-md text-sm md:text-base" placeholder="Your Name">
-                    </div>
-                    <div>
-                        <label for="email" class="block text-sm font-medium">Email</label>
-                        <input type="email" id="email" class="w-full p-2 border rounded-md text-sm md:text-base" placeholder="Your Email">
-                    </div>
-                    <div>
-                        <label for="message" class="block text-sm font-medium">Message</label>
-                        <textarea id="message" class="w-full p-2 border rounded-md text-sm md:text-base" rows="4" placeholder="Your Message"></textarea>
-                    </div>
-                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition text-sm md:text-base">Send Message</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-gray-800 text-white text-center py-4">
-        <p class="text-sm md:text-base">© 2025 Dennis Terlumun Bijah. All rights reserved.</p>
-        <p class="text-sm md:text-base">References available upon request.</p>
-    </footer>
-
-    <script>
-        const navToggle = document.getElementById('nav-toggle');
-        const navMenu = document.getElementById('nav-menu');
-
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('hidden');
-            navMenu.classList.toggle('max-h-0');
-            navMenu.classList.toggle('max-h-screen');
-        });
-    </script>
 </body>
 </html>
